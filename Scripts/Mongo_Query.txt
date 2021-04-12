@@ -1,0 +1,96 @@
+db.car.insert({
+	name: 'Mercedes Benz',
+	make: 'GLE',
+	year: '2018',
+	transmission: 'automatic'
+})
+db.card.insert({
+	name: 'Lexus',
+	make: 'IS200',
+	year: '2000',
+	transmission: 'automatic'
+})
+
+db.car.update({
+	name: 'Mercedes Benz',
+	}, 
+	{$set: {
+	 name: 'Lexus'
+	 }
+})
+
+db.car.update({
+	name: 'Lexus'
+	}, 
+	{$set: {
+	 transmission: 'automatic'
+	 }
+}, {$upsert:true})
+
+------Updating with Date -----------------------------
+db.Albums.update({
+    'albumTitle': 'Brilliant Dream'
+    },
+    {$set: { 'albumTitle': 'Brilliant Dream', 
+             'produceDate': new Date ('20-may-2018')
+            }
+    }
+)
+
+db.car.remove({name: 'Lexus'})
+
+-----Creating Database ----------------------------
+show dbs
+use <newDatabaseName>
+--adding collection before show dbs to see it
+db.createCollection('artists')
+
+---Deleting Database -------------------------------
+show dbs
+use moviedb
+db.dropDatabase()
+-----Creating Collection---------------------------
+db.createCollection('students')
+
+----Dropping Collection --------------------------
+db.students.drop()
+----Inserting ------------------------------------
+db.students.insert({
+ name: 'joe',
+ undergrad: true,
+ units: 9,
+ classes:['geography','maths','media']
+})
+
+db.students.insert({
+ name: 'jane',
+ undergrad: true,
+ units: 12,
+ classes:['geography','science','journalism','history']
+})
+
+db.students.insert({
+ name: 'kevin',
+ undergrad: true,
+ units: 3,
+ classes:['geography']
+})
+
+--------Querying --------------
+db.students.find({name: 'jane'}).pretty()
+db.students.find({units: {$gt:6}}).pretty()
+db.students.find({units: {$lt:6}}).pretty()
+db.students.find({classes: {$in: ['history', 'geography']}}).pretty()
+db.students.find({classes: {$in: ['geography']} }).sort({units: 1}).pretty() //ascending
+db.students.find({classes: {$in: ['history']} }).sort({units: 1}).pretty()
+db.students.find({classes: {$in: ['geography']} }).sort({units: -1}).pretty() //descending
+
+---Sorting by alphabetical order -------------
+db.students.find({}).sort({name: 1 }).pretty() //ascending
+db.students.find({}).sort({name: -1 }).pretty() //descending
+
+-----Limiting---------------
+db.students.find({}).sort({name: -1 }).limit(2).pretty()
+
+
+APIKEY : b2801c9a-39bf-4e4e-bab1-ee648c2f5674
