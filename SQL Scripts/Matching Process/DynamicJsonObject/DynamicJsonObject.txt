@@ -1,0 +1,82 @@
+        
+		//[HttpGet]
+        //public IActionResult Get(string productNo, string barcode)
+        //{
+        //    var response = _productService.GetProduct(productNo, barcode);
+
+        //    if (response.Result.StatusCode == StatusResponseCode.BadRequest)
+        //    {
+        //        return BadRequest(response.Result.Message);
+        //    }
+
+        //    return Ok(response.Result.Message);
+        //}
+		
+		//public async Task<ProductResponse> GetProduct(string productNo, string barcode)
+        //{
+        //    string message = "Not found";
+
+        //    if (string.IsNullOrEmpty(productNo) && string.IsNullOrEmpty(barcode))
+        //    {
+        //        return new ProductResponse
+        //        {
+        //            StatusCode = StatusResponseCode.BadRequest,
+        //            Message = "Product No or Barcode - One is required"
+        //        };
+        //    }
+
+        //    var product = new Product
+        //    {
+        //        ProductNo = productNo,
+        //        Barcode = barcode
+        //    };
+
+        //    product = await _productRepositoryService.GetProduct(product);
+
+        //    dynamic req = new JObject();
+        //    req.productNo = productNo;
+        //    req.barcode = barcode;
+
+        //    var logging = new Logging()
+        //    {
+        //        Endpoint = @"Product",
+        //        CreatedDate = DateTime.UtcNow,
+        //        RequestJson = req
+        //    };
+
+        //    dynamic res = new JObject();
+        //    res.productNo = productNo;
+        //    res.barcode = barcode;
+
+        //    if (product == null)
+        //    {
+        //        res.response = message;
+
+        //        logging.ResponseJson = res;
+
+        //        await _loggingRepositoryService.AddLogging(logging);
+
+        //        return new ProductResponse
+        //        {
+        //            StatusCode = StatusResponseCode.NotFound,
+        //            Message = message
+        //        };
+        //    }
+
+        //    //Including response object in logging
+
+        //    message = "Valid";
+
+        //    res.response = message;
+
+        //    logging.ResponseJson = res;
+
+        //    await _loggingRepositoryService.AddLogging(logging);
+
+        //    return new ProductResponse
+        //    {
+        //        StatusCode = StatusResponseCode.Valid,
+        //        Message = message,
+        //        Product = product
+        //    };
+        //}
